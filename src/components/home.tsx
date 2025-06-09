@@ -91,8 +91,8 @@ export default function Home() {
   ];
 
   const stats = [
-    { number: "2000+", label: "Zufriedene Kunden" },
-    { number: "20+", label: "Jahre Erfahrung" },
+    { number: "1000+", label: "Zufriedene Kunden" },
+    { number: "25+", label: "Jahre Erfahrung" },
     { number: "50+", label: "Partnerunternehmen" },
     { number: "98%", label: "Kundenzufriedenheit" },
   ];
@@ -101,6 +101,28 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Enhanced Hero Section */}
       <HeroSection onCtaClick={() => (window.location.href = "/contact")} />
+
+      {/* Company Description Section */}
+      <section className="py-16 px-4 md:px-8 lg:px-16 max-w-4xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6"
+        >
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Seit unserer Gründung vor 25 Jahren haben wir es uns zur Mission gemacht, 
+            unseren Kunden massgeschneiderte Beratung und erstklassigen Service zu bieten, 
+            um ihre finanziellen Ziele zu erreichen und ihre Werte zu schützen.
+          </p>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Bei HSB Swiss AG stehen die Bedürfnisse und Ziele unserer Kunden im Mittelpunkt 
+            unserer Arbeit. Wir setzen auf eine individuelle, persönliche Beratung und legen 
+            Wert auf langfristige Partnerschaften, die auf Vertrauen, Integrität und Exzellenz aufbauen.
+          </p>
+        </motion.div>
+      </section>
 
       {/* Statistics Section */}
       <section className="py-16 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
@@ -416,6 +438,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Kontaktieren Sie uns
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Wir sind für Sie da - persönlich, telefonisch oder per E-Mail
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+            <Phone className="h-8 w-8 mx-auto mb-4 text-red-600" />
+            <h3 className="text-xl font-semibold mb-2">Telefon</h3>
+            <a href="tel:+41564272515" className="flex items-center justify-center text-gray-600 hover:text-red-600">
+              +41 56 427 25 15
+            </a>
+          </Card>
+
+          <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+            <Mail className="h-8 w-8 mx-auto mb-4 text-red-600" />
+            <h3 className="text-xl font-semibold mb-2">E-Mail</h3>
+            <a href="mailto:info@hsb-swiss.ch" className="text-gray-600 hover:text-red-600">
+              info@hsb-swiss.ch
+            </a>
+          </Card>
+
+          <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+            <Clock className="h-8 w-8 mx-auto mb-4 text-red-600" />
+            <h3 className="text-xl font-semibold mb-2">Öffnungszeiten</h3>
+            <div className="text-gray-600">
+              <p>Mo-Do: 09:00-12:00, 13:30-17:30</p>
+              <p>Fr: 09:00-12:00, 13:30-16:00</p>
+              <p>Sa: Termin auf Anfrage</p>
+            </div>
+          </Card>
+        </div>
+      </section>
+
       {/* Enhanced CTA Section */}
       <section className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
         <motion.div
@@ -484,7 +552,7 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
+                className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
               >
                 <a href="tel:+41441234567" className="flex items-center">
                   <Phone className="mr-2 h-5 w-5" />
@@ -495,7 +563,7 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
+                className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
               >
                 <a
                   href="mailto:info@hsbswiss.com"

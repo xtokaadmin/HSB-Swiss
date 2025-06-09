@@ -17,15 +17,15 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center group">
             <img
               src="/images/hsb-Photoroom.png"
               alt="HSB Swiss Logo"
-              className="h-8 w-auto sm:h-10 md:h-12 lg:h-14 object-contain transition-all duration-200 hover:scale-105"
+              className="h-8 w-auto sm:h-10 md:h-12 lg:h-14 object-contain transition-all duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -36,19 +36,26 @@ const Navigation = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "text-gray-600 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors",
+                  "text-gray-600 hover:text-red-600 px-3 py-2 text-sm font-medium transition-all duration-200 relative group",
                   location.pathname === item.path &&
                     "text-red-600 font-semibold",
                 )}
               >
                 {item.name}
+                <span className={cn(
+                  "absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 transition-all duration-200 group-hover:w-full",
+                  location.pathname === item.path && "w-full"
+                )} />
               </Link>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="bg-red-600 hover:bg-red-700">
+            <Button 
+              asChild 
+              className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-2.5 shadow-sm hover:shadow-md transition-all duration-200"
+            >
               <Link to="/contact">Jetzt starten</Link>
             </Button>
           </div>
@@ -59,12 +66,13 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="hover:bg-gray-50"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 text-gray-600" />
               ) : (
                 <svg
-                  className="h-6 w-6"
+                  className="h-6 w-6 text-gray-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -91,7 +99,7 @@ const Navigation = () => {
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "block px-3 py-2 text-base font-medium transition-colors rounded-md",
+                    "block px-3 py-2.5 text-base font-medium transition-all duration-200 rounded-md",
                     location.pathname === item.path
                       ? "text-red-600 bg-red-50 font-semibold"
                       : "text-gray-600 hover:text-red-600 hover:bg-gray-50",
@@ -100,10 +108,10 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-2">
+              <div className="pt-3">
                 <Button
                   asChild
-                  className="w-full bg-red-600 hover:bg-red-700"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 shadow-sm hover:shadow-md transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Link to="/contact">Jetzt starten</Link>

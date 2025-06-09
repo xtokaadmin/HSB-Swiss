@@ -32,6 +32,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -70,28 +71,32 @@ const ConsultationForm = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-12 bg-white">
-      <Card className="border-0 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-t-xl">
-          <CardTitle className="text-2xl font-semibold">
+    <div className="w-full max-w-4xl mx-auto px-4 py-16 bg-gradient-to-b from-gray-50 to-white">
+      <Card className="border-0 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-t-xl px-8 py-8">
+          <CardTitle className="text-3xl font-semibold tracking-tight">
             Request a Consultation
           </CardTitle>
-          <CardDescription className="text-white/90">
+          <CardDescription className="text-white/90 text-lg mt-2">
             Fill out the form below and our experts will contact you shortly.
           </CardDescription>
         </CardHeader>
-        <CardContent className="pt-6">
+        <CardContent className="pt-8 px-8">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full Name</FormLabel>
+                      <FormLabel className="text-base font-medium">Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Smith" {...field} />
+                        <Input 
+                          placeholder="John Smith" 
+                          {...field} 
+                          className="h-12 text-base"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -102,12 +107,13 @@ const ConsultationForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email Address</FormLabel>
+                      <FormLabel className="text-base font-medium">Email Address</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
                           placeholder="john@example.com"
                           {...field}
+                          className="h-12 text-base"
                         />
                       </FormControl>
                       <FormMessage />
@@ -116,15 +122,19 @@ const ConsultationForm = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <FormField
                   control={form.control}
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
+                      <FormLabel className="text-base font-medium">Phone Number</FormLabel>
                       <FormControl>
-                        <Input placeholder="+41 XX XXX XX XX" {...field} />
+                        <Input 
+                          placeholder="+41 56 427 25 15" 
+                          {...field} 
+                          className="h-12 text-base"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -135,13 +145,13 @@ const ConsultationForm = () => {
                   name="serviceInterest"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Service Interest</FormLabel>
+                      <FormLabel className="text-base font-medium">Service Interest</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
-                          <SelectTrigger>
+                          <SelectTrigger className="h-12 text-base">
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
                         </FormControl>
@@ -169,11 +179,11 @@ const ConsultationForm = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your Message</FormLabel>
+                    <FormLabel className="text-base font-medium">Your Message</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Please describe what you're looking for..."
-                        className="min-h-[120px]"
+                        className="min-h-[150px] text-base resize-none"
                         {...field}
                       />
                     </FormControl>
@@ -186,18 +196,19 @@ const ConsultationForm = () => {
                 control={form.control}
                 name="privacyPolicy"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-6 bg-gray-50">
                     <FormControl>
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        className="mt-1"
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
-                      <FormLabel>
+                      <FormLabel className="text-base font-medium">
                         I agree to the privacy policy and terms of service
                       </FormLabel>
-                      <FormDescription>
+                      <FormDescription className="text-gray-600">
                         Your data will be processed according to our privacy
                         policy.
                       </FormDescription>
@@ -207,12 +218,12 @@ const ConsultationForm = () => {
                 )}
               />
 
-              <CardFooter className="px-0 pt-2">
+              <CardFooter className="px-0 pt-4">
                 <Button
                   type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-6"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-7 text-lg font-medium shadow-sm hover:shadow-md transition-all duration-200"
                 >
-                  <CheckIcon className="mr-2 h-4 w-4" /> Submit Request
+                  <CheckIcon className="mr-2 h-5 w-5" /> Submit Request
                 </Button>
               </CardFooter>
             </form>

@@ -87,20 +87,20 @@ const ContactPage = () => {
       icon: <Phone className="h-8 w-8" />,
       title: "Telefonische Beratung",
       description: "Sofortige Hilfe von unseren Finanzexperten",
-      details: "+41 44 123 45 67",
-      availability: "Mo-Fr: 8:00-18:00, Sa: 9:00-14:00",
+      details: "+41 56 427 25 15",
+      availability: "Mo-Do: 09:00-12:00, 13:30-17:30, Fr: 09:00-12:00, 13:30-16:00",
       response: "Sofort",
-      link: "tel:+41441234567",
+      link: "tel:+41564272515",
       color: "bg-blue-100 text-blue-600",
     },
     {
       icon: <Mail className="h-8 w-8" />,
       title: "E-Mail Support",
       description: "Detaillierte Antworten auf Ihre Fragen",
-      details: "info@hsbswiss.com",
+      details: "info@hsb-swiss.ch",
       availability: "Rund um die Uhr",
       response: "Innerhalb 24h",
-      link: "mailto:info@hsbswiss.com",
+      link: "mailto:info@hsb-swiss.ch",
       color: "bg-green-100 text-green-600",
     },
     {
@@ -117,8 +117,8 @@ const ContactPage = () => {
       icon: <MapPin className="h-8 w-8" />,
       title: "Persönlicher Besuch",
       description: "Beratung in unserem Büro in Wettingen",
-      details: "Country Road 78, 5430 Wettingen",
-      availability: "Mo-Fr: 8:00-18:00, Sa: 9:00-14:00",
+      details: "Landstrasse 78, 5430 Wettingen",
+      availability: "Mo-Do: 09:00-12:00, 13:30-17:30, Fr: 09:00-12:00, 13:30-16:00",
       response: "Terminvereinbarung",
       link: "#map",
       color: "bg-red-100 text-red-600",
@@ -129,28 +129,28 @@ const ContactPage = () => {
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Adresse",
-      details: ["Country Road 78", "5430 Wettingen, Schweiz"],
+      details: ["Landstrasse 78", "5430 Wettingen, Schweiz"],
       color: "bg-red-100 text-red-600",
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Telefon",
-      details: ["+41 44 123 45 67"],
+      details: ["+41 56 427 25 15"],
       color: "bg-blue-100 text-blue-600",
     },
     {
       icon: <Mail className="h-6 w-6" />,
       title: "E-Mail",
-      details: ["info@hsbswiss.com"],
+      details: ["info@hsb-swiss.ch"],
       color: "bg-green-100 text-green-600",
     },
     {
       icon: <Clock className="h-6 w-6" />,
       title: "Öffnungszeiten",
       details: [
-        "Montag - Freitag: 8:00 - 18:00",
-        "Samstag: 9:00 - 14:00",
-        "Sonntag: Geschlossen",
+        "Montag - Donnerstag: 09:00 - 12:00, 13:30 - 17:30",
+        "Freitag: 09:00 - 12:00, 13:30 - 16:00",
+        "Samstag: Termin auf Anfrage",
       ],
       color: "bg-purple-100 text-purple-600",
     },
@@ -268,7 +268,7 @@ const ContactPage = () => {
                 size="lg"
                 className="bg-white text-red-600 hover:bg-gray-100 px-8 py-6 text-lg"
               >
-                <a href="tel:+41441234567" className="flex items-center">
+                <a href="tel:+41564272515" className="flex items-center">
                   <Phone className="mr-2 h-5 w-5" />
                   Jetzt anrufen
                 </a>
@@ -760,13 +760,13 @@ const ContactPage = () => {
                       HSB Swiss Büro
                     </h3>
                     <p className="text-gray-600 text-sm mb-2">
-                      Country Road 78
+                      Landstrasse 78
                       <br />
                       5430 Wettingen, Schweiz
                     </p>
                     <div className="flex items-center justify-center text-xs text-gray-500">
                       <Phone className="h-3 w-3 mr-1" />
-                      +41 44 123 45 67
+                      +41 56 427 25 15
                     </div>
                   </div>
                 </Popup>
@@ -780,7 +780,7 @@ const ContactPage = () => {
                   HSB Swiss Finanzberatung
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  Country Road 78, 5430 Wettingen, Schweiz
+                  Landstrasse 78, 5430 Wettingen, Schweiz
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
@@ -790,7 +790,7 @@ const ContactPage = () => {
                   className="border-red-600 text-red-600 hover:bg-red-50"
                 >
                   <a
-                    href="https://maps.google.com/?q=Country+Road+78,+5430+Wettingen,+Switzerland"
+                    href="https://maps.google.com/?q=Landstrasse+78,+5430+Wettingen,+Switzerland"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center"
@@ -800,7 +800,7 @@ const ContactPage = () => {
                   </a>
                 </Button>
                 <Button asChild className="bg-red-600 hover:bg-red-700">
-                  <a href="tel:+41441234567" className="flex items-center">
+                  <a href="tel:+41564272515" className="flex items-center">
                     <Phone className="h-4 w-4 mr-2" />
                     Anrufen
                   </a>
@@ -870,7 +870,7 @@ const ContactPage = () => {
                 size="lg"
                 className="bg-white text-red-600 hover:bg-gray-100 px-8 py-6 text-lg"
               >
-                <a href="tel:+41441234567" className="flex items-center">
+                <a href="tel:+41564272515" className="flex items-center">
                   <Phone className="mr-2 h-5 w-5" />
                   Sofort anrufen
                 </a>
@@ -879,10 +879,10 @@ const ContactPage = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
+                className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
               >
                 <a
-                  href="mailto:info@hsbswiss.com"
+                  href="mailto:info@hsb-swiss.ch"
                   className="flex items-center"
                 >
                   <Mail className="mr-2 h-5 w-5" />
@@ -893,7 +893,7 @@ const ContactPage = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
+                className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
               >
                 <a href="#contact-form" className="flex items-center">
                   <Calendar className="mr-2 h-5 w-5" />

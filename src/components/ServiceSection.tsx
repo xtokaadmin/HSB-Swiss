@@ -41,30 +41,31 @@ const ServiceCard = ({
       whileHover={{ y: -5 }}
       className="h-full"
     >
-      <Card className="h-full bg-white border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <Card className="h-full bg-white border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-gray-200">
         <CardHeader className="pb-2">
           <motion.div
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-red-600 mb-4"
+            className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-red-50 to-red-100 text-red-600 mb-5 shadow-sm"
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ duration: 0.2 }}
           >
             {icon}
           </motion.div>
-          <CardTitle className="text-xl font-semibold">{title}</CardTitle>
+          <CardTitle className="text-xl font-semibold tracking-tight">{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          <CardDescription className="text-gray-600">
+          <CardDescription className="text-gray-600 text-base leading-relaxed">
             {description}
           </CardDescription>
         </CardContent>
         <CardFooter>
           <Button
             variant="ghost"
-            className="p-0 h-auto text-red-600 hover:text-red-800 hover:bg-transparent"
+            className="p-0 h-auto text-red-600 hover:text-red-800 hover:bg-transparent font-medium"
             asChild
           >
-            <a href={link} className="flex items-center gap-1">
-              Mehr erfahren <ArrowRight className="h-4 w-4 ml-1" />
+            <a href={link} className="flex items-center gap-1 group">
+              Mehr erfahren 
+              <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
         </CardFooter>
@@ -123,20 +124,20 @@ const ServiceSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-24 px-4 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Unsere Dienstleistungen</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-6 tracking-tight">Unsere Dienstleistungen</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             HSB Swiss bietet umfassende Finanzlösungen durch unsere Bank- und
             Versicherungsmaklerdienstleistungen, die auf Ihre spezifischen
             Bedürfnisse zugeschnitten sind.
           </p>
         </div>
 
-        <div className="mb-16">
+        <div className="mb-20">
           <motion.h3
-            className="text-2xl font-semibold mb-8 text-center"
+            className="text-2xl font-semibold mb-10 text-center tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -144,7 +145,7 @@ const ServiceSection = () => {
           >
             Bankdienstleistungen
           </motion.h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {bankingServices.map((service, index) => (
               <motion.div
                 key={`banking-${index}`}
@@ -170,7 +171,7 @@ const ServiceSection = () => {
 
         <div>
           <motion.h3
-            className="text-2xl font-semibold mb-8 text-center"
+            className="text-2xl font-semibold mb-10 text-center tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -178,7 +179,7 @@ const ServiceSection = () => {
           >
             Versicherungsdienstleistungen
           </motion.h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {insuranceServices.map((service, index) => (
               <motion.div
                 key={`insurance-${index}`}

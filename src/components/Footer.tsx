@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12 px-4 md:px-8 lg:px-16">
+    <footer className="bg-gray-900 text-white py-16 px-4 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
-            <h3 className="text-xl font-bold mb-4">HSB Swiss</h3>
-            <p className="text-gray-400 mb-4">
+            <h3 className="text-2xl font-bold mb-6 tracking-tight">HSB Swiss</h3>
+            <p className="text-gray-400 mb-6 leading-relaxed">
               Ihr vertrauensvoller Partner für Bank- und Versicherungslösungen
               in der Schweiz.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-5">
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-all duration-200 hover:scale-110"
               >
                 <span className="sr-only">LinkedIn</span>
                 <svg
@@ -28,7 +29,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-all duration-200 hover:scale-110"
               >
                 <span className="sr-only">Twitter</span>
                 <svg
@@ -42,13 +43,47 @@ export default function Footer() {
               </a>
             </div>
           </div>
+
           <div>
-            <h3 className="text-lg font-semibold mb-4">Schnellzugriff</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xl font-semibold mb-6 tracking-tight">Kontakt</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-gray-400 mt-1" />
+                <span className="text-gray-400">
+                  Landstrasse 78<br />
+                  5430 Wettingen
+                </span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-gray-400" />
+                <a href="tel:+41564272515" className="text-gray-400 hover:text-white transition-colors">
+                  +41 56 427 25 15
+                </a>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-gray-400" />
+                <a href="mailto:info@hsb-swiss.ch" className="text-gray-400 hover:text-white transition-colors">
+                  info@hsb-swiss.ch
+                </a>
+              </li>
+              <li className="flex items-start space-x-3">
+                <Clock className="h-5 w-5 text-gray-400 mt-1" />
+                <div className="text-gray-400">
+                  <p>Mo-Do: 09:00-12:00, 13:30-17:30</p>
+                  <p>Fr: 09:00-12:00, 13:30-16:00</p>
+                  <p>Sa: Termin auf Anfrage</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-6 tracking-tight">Schnellzugriff</h3>
+            <ul className="space-y-3">
               <li>
                 <Link
                   to="/"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Startseite
                 </Link>
@@ -56,7 +91,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Über uns
                 </Link>
@@ -64,7 +99,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/services"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Dienstleistungen
                 </Link>
@@ -72,7 +107,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/faq"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   FAQ
                 </Link>
@@ -80,20 +115,21 @@ export default function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Kontakt
                 </Link>
               </li>
             </ul>
           </div>
+
           <div>
-            <h3 className="text-lg font-semibold mb-4">Rechtliches</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xl font-semibold mb-6 tracking-tight">Rechtliches</h3>
+            <ul className="space-y-3">
               <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Datenschutzrichtlinie
                 </a>
@@ -101,7 +137,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Nutzungsbedingungen
                 </a>
@@ -109,7 +145,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Cookie-Richtlinie
                 </a>
@@ -117,7 +153,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                 >
                   Haftungsausschluss
                 </a>
@@ -125,8 +161,8 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p className="text-sm">
             &copy; {new Date().getFullYear()} HSB Swiss. All rights reserved.
           </p>
         </div>

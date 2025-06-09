@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ServiceSection from "@/components/ServiceSection";
 import Footer from "@/components/Footer";
@@ -24,7 +24,10 @@ import {
   Phone,
   Mail,
   Calendar,
+  Building2,
+  User,
 } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ServicesPage = () => {
   const processSteps = [
@@ -83,81 +86,124 @@ const ServicesPage = () => {
 
   const serviceDetails = [
     {
-      category: "Bankdienstleistungen",
-      description:
-        "Umfassende Banklösungen, die auf Ihre finanziellen Bedürfnisse zugeschnitten sind",
+      category: "Für Privatkunden",
+      description: "Massgeschneiderte Lösungen für Ihre persönlichen Bedürfnisse",
       services: [
         {
-          name: "Private Banking",
-          description:
-            "Exklusive Bankdienstleistungen für vermögende Privatpersonen mit dedizierten Beziehungsmanagern.",
+          name: "Krankenversicherung",
+          description: "Prüfen Sie unsere Angebote und sparen Sie jedes Jahr bis zu CHF 600.- pro Person",
           features: [
-            "Personalisierte Anlagestrategien",
-            "Vermögenserhaltungsplanung",
-            "Nachlassplanungsdienstleistungen",
-            "Steueroptimierung",
+            "Vergleich verschiedener Krankenkassen",
+            "Optimale Prämien",
+            "Umfassender Versicherungsschutz",
+            "Persönliche Beratung",
+          ],
+          highlight: "CHF 600.- pro Person sparen",
+        },
+        {
+          name: "Privathaftflicht",
+          description: "Schützen Sie sich vor unvorhergesehenen Ereignissen im Alltag",
+          features: [
+            "Umfassender Haftpflichtschutz",
+            "Flexible Deckungssummen",
+            "Schnelle Schadenabwicklung",
+            "24/7 Notfallservice",
           ],
         },
         {
-          name: "Vermögensverwaltung",
-          description:
-            "Professionelle Portfolioverwaltung und Anlageberatungsdienstleistungen.",
+          name: "Vorsorge / Anlegen",
+          description: "Wir helfen Ihnen Ihre finanzielle Zukunft zu planen, für langfristigen Wohlstand",
           features: [
-            "Vermögensallokation",
-            "Risikomanagement",
-            "Performance-Überwachung",
-            "Regelmäßige Portfolio-Reviews",
+            "Individuelle Vorsorgeplanung",
+            "Anlagestrategien",
+            "Rentenplanung",
+            "Vermögensaufbau",
           ],
         },
         {
-          name: "Anlageberatung",
-          description:
-            "Expertenberatung zu Anlagemöglichkeiten auf globalen Märkten.",
+          name: "Hypotheken",
+          description: "Erfüllen Sie sich den Traum vom Eigenheim mit einer optimalen Finanzierung",
           features: [
-            "Marktanalyse",
-            "Anlageforschung",
-            "Portfolio-Diversifikation",
-            "Strategische Planung",
+            "Hypothekenberatung",
+            "Vergleich verschiedener Anbieter",
+            "Optimale Zinskonditionen",
+            "Flexible Rückzahlungsmodelle",
+          ],
+        },
+        {
+          name: "Rechtsschutz",
+          description: "Schützen Sie sich vor kostspieligen Rechtsstreitigkeiten",
+          features: [
+            "Rechtsschutzversicherung",
+            "Beratung bei Rechtsfragen",
+            "Vertretung vor Gericht",
+            "Mediation und Schlichtung",
+          ],
+        },
+        {
+          name: "Autoversicherungen",
+          description: "Fahren Sie sorgenfrei und geniessen Sie den optimalen Versicherungsschutz",
+          features: [
+            "Kaskoversicherung",
+            "Haftpflichtversicherung",
+            "Unfallversicherung",
+            "Zusatzleistungen",
           ],
         },
       ],
     },
     {
-      category: "Versicherungsdienstleistungen",
-      description:
-        "Umfassende Versicherungslösungen zum Schutz dessen, was am wichtigsten ist",
+      category: "Für Geschäftskunden",
+      description: "Professionelle Lösungen für Ihr Unternehmen",
       services: [
         {
-          name: "Lebensversicherung",
-          description:
-            "Schützen Sie die finanzielle Zukunft Ihrer Familie mit umfassender Lebensversicherung.",
+          name: "Neugründung",
+          description: "Werden Sie von Experten optimal Schritt für Schritt in die Selbstständigkeit geführt",
           features: [
-            "Risikolebensversicherung",
-            "Kapitallebensversicherung",
-            "Universelle Lebensversicherung",
-            "Integration der Nachlassplanung",
+            "Gründungsberatung",
+            "Businessplan-Erstellung",
+            "Finanzierungsplanung",
+            "Rechtliche Beratung",
           ],
         },
         {
-          name: "Unternehmensversicherung",
-          description:
-            "Umfassender Schutz für Ihre Geschäftstätigkeiten und Vermögenswerte.",
+          name: "Berufliche Vorsorge",
+          description: "Wir können Ihnen helfen die optimale Vorsorge für Ihre Mitarbeitenden zu finden",
           features: [
-            "Allgemeine Haftpflicht",
-            "Berufshaftpflicht",
-            "Sachversicherung",
+            "BVG-Beratung",
+            "Pensionskassenoptimierung",
+            "Mitarbeitervorsorge",
+            "Vorsorgeplanung",
+          ],
+        },
+        {
+          name: "Treuhand",
+          description: "Mit unserer Hilfe können Sie sich auf Ihr Kerngeschäft fokusieren",
+          features: [
+            "Buchhaltung",
+            "Finanzberatung",
+            "Steuerberatung",
+            "Controlling",
+          ],
+        },
+        {
+          name: "Versicherungen",
+          description: "Schützen Sie ihr Unternehmen und Ihre Mitarbeiter",
+          features: [
+            "Betriebshaftpflicht",
+            "Sachversicherungen",
+            "Mitarbeiterversicherungen",
             "Betriebsunterbrechung",
           ],
         },
         {
-          name: "Altersvorsorge",
-          description:
-            "Strategische Planung für eine sichere und komfortable Rente.",
+          name: "Kredite",
+          description: "Finden Sie die richtige Finanzierung für Ihre Träume",
           features: [
-            "Rentenplanung",
-            "Altersvorsorgestrategien",
-            "Sozialversicherungsoptimierung",
-            "Gesundheitsplanung",
+            "Betriebsmittelkredite",
+            "Investitionskredite",
+            "Leasing",
+            "Factoring",
           ],
         },
       ],
@@ -228,7 +274,7 @@ const ServicesPage = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
+                className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
               >
                 <a href="#services" className="flex items-center">
                   Services entdecken <ArrowRight className="ml-2 h-5 w-5" />
@@ -284,11 +330,8 @@ const ServicesPage = () => {
 
       <Separator className="max-w-6xl mx-auto" />
 
-      {/* Service Overview */}
-      <section
-        id="services"
-        className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto"
-      >
+      {/* Service Overview with Tabs */}
+      <section id="services" className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -303,7 +346,95 @@ const ServicesPage = () => {
             Professionelle Finanzlösungen für jeden Bedarf
           </p>
         </motion.div>
-        <ServiceSection />
+
+        <Tabs defaultValue="private" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-8">
+            <TabsTrigger value="private" className="flex items-center gap-2">
+              <User className="h-5 w-5" />
+              Privatkunden
+            </TabsTrigger>
+            <TabsTrigger value="business" className="flex items-center gap-2">
+              <Building2 className="h-5 w-5" />
+              Geschäftskunden
+            </TabsTrigger>
+          </TabsList>
+
+          {serviceDetails.map((category, categoryIndex) => (
+            <TabsContent
+              key={categoryIndex}
+              value={category.category === "Für Privatkunden" ? "private" : "business"}
+              className="mt-6"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {category.services.map((service, serviceIndex) => (
+                  <motion.div
+                    key={serviceIndex}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: serviceIndex * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="h-full"
+                  >
+                    <Card className="h-full bg-white shadow-sm hover:shadow-xl border-2 border-gray-100 hover:border-red-200 transition-all duration-300 group">
+                      <CardHeader className="pb-4">
+                        <div className="flex items-center justify-between mb-3">
+                          <Badge
+                            variant="outline"
+                            className="bg-red-50 text-red-700 border-red-200"
+                          >
+                            Premium Service
+                          </Badge>
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <CheckCircle className="h-6 w-6 text-green-500" />
+                          </motion.div>
+                        </div>
+                        <CardTitle className="text-xl group-hover:text-red-600 transition-colors">
+                          {service.name}
+                        </CardTitle>
+                        <CardDescription className="text-gray-600 text-base">
+                          {service.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <h4 className="font-semibold mb-4 text-gray-900 flex items-center">
+                          <Star className="h-4 w-4 mr-2 text-red-600" />
+                          Hauptmerkmale:
+                        </h4>
+                        <ul className="space-y-3">
+                          {service.features.map((feature, featureIndex) => (
+                            <motion.li
+                              key={featureIndex}
+                              className="flex items-start"
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: featureIndex * 0.1 }}
+                            >
+                              <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                              <span className="text-gray-600">{feature}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                        {service.highlight && (
+                          <div className="mt-6 p-4 bg-red-50 rounded-lg border border-red-100">
+                            <p className="text-red-700 font-semibold flex items-center">
+                              <Star className="h-5 w-5 mr-2" />
+                              {service.highlight}
+                            </p>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
       </section>
 
       {/* How We Work Process */}
@@ -364,216 +495,57 @@ const ServicesPage = () => {
 
       <Separator className="max-w-6xl mx-auto" />
 
-      {/* Detailed Services */}
-      <section className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Detaillierte Servicebereiche
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Entdecken Sie unsere umfassenden Finanzlösungen im Detail
-          </p>
-        </motion.div>
-        <div className="space-y-20">
-          {serviceDetails.map((category, categoryIndex) => (
-            <motion.div
-              key={categoryIndex}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+      {/* CTA Section */}
+      <section className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Bereit für Ihren finanziellen Erfolg?
+          </motion.h2>
+          <motion.p
+            className="text-xl text-white/90 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Vereinbaren Sie noch heute einen kostenlosen Beratungstermin
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-red-600 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
             >
-              <div className="text-center mb-12">
-                <motion.h3
-                  className="text-3xl font-bold text-gray-900 mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  {category.category}
-                </motion.h3>
-                <motion.p
-                  className="text-gray-600 max-w-2xl mx-auto text-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  {category.description}
-                </motion.p>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {category.services.map((service, serviceIndex) => (
-                  <motion.div
-                    key={serviceIndex}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: serviceIndex * 0.1 }}
-                    whileHover={{ y: -5 }}
-                    className="h-full"
-                  >
-                    <Card className="h-full bg-white shadow-sm hover:shadow-xl border-2 border-gray-100 hover:border-red-200 transition-all duration-300 group">
-                      <CardHeader className="pb-4">
-                        <div className="flex items-center justify-between mb-3">
-                          <Badge
-                            variant="outline"
-                            className="bg-red-50 text-red-700 border-red-200"
-                          >
-                            Premium Service
-                          </Badge>
-                          <motion.div
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <CheckCircle className="h-6 w-6 text-green-500" />
-                          </motion.div>
-                        </div>
-                        <CardTitle className="text-xl group-hover:text-red-600 transition-colors">
-                          {service.name}
-                        </CardTitle>
-                        <CardDescription className="text-gray-600 text-base">
-                          {service.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <h4 className="font-semibold mb-4 text-gray-900 flex items-center">
-                          <Star className="h-4 w-4 mr-2 text-red-600" />
-                          Hauptmerkmale:
-                        </h4>
-                        <ul className="space-y-3">
-                          {service.features.map((feature, featureIndex) => (
-                            <motion.li
-                              key={featureIndex}
-                              className="flex items-start"
-                              initial={{ opacity: 0, x: -10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{
-                                duration: 0.3,
-                                delay: featureIndex * 0.1,
-                              }}
-                            >
-                              <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                              <span className="text-gray-600">{feature}</span>
-                            </motion.li>
-                          ))}
-                        </ul>
-                        <div className="mt-6 pt-4 border-t border-gray-100">
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="w-full border-red-600 text-red-600 hover:bg-red-50 group-hover:bg-red-600 group-hover:text-white transition-all"
-                          >
-                            <Link
-                              to="/contact"
-                              className="flex items-center justify-center"
-                            >
-                              Mehr erfahren{" "}
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+              <Link to="/contact" className="flex items-center text-red-600 font-semibold">
+                Jetzt Termin vereinbaren <Calendar className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-6 text-lg font-semibold"
+            >
+              <a href="tel:+41564272515" className="flex items-center text-red-600 font-semibold">
+                Direkt anrufen <Phone className="ml-2 h-5 w-5" />
+              </a>
+            </Button>
+          </motion.div>
         </div>
       </section>
-
-      {/* Enhanced CTA Section */}
-      <section className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
-        <motion.div
-          className="relative bg-gradient-to-r from-red-600 via-red-700 to-red-800 rounded-3xl p-8 md:p-16 text-center text-white overflow-hidden"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-10 right-10 w-24 h-24 bg-white/10 rounded-full animate-pulse" />
-            <div className="absolute bottom-10 left-10 w-32 h-32 bg-white/5 rounded-full animate-pulse delay-1000" />
-          </div>
-          <div className="relative z-10">
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              Bereit für Ihren finanziellen Erfolg?
-            </motion.h2>
-            <motion.p
-              className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              Kontaktieren Sie unser Expertenteam für eine kostenlose Beratung
-              und entdecken Sie, wie wir Ihnen helfen können, Ihre finanziellen
-              Ziele zu erreichen.
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Button
-                asChild
-                size="lg"
-                className="bg-white text-red-600 hover:bg-gray-100 px-8 py-6 text-lg"
-              >
-                <Link to="/contact" className="flex items-center">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Kostenlose Beratung
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
-              >
-                <a href="tel:+41441234567" className="flex items-center">
-                  <Phone className="mr-2 h-5 w-5" />
-                  +41 44 123 45 67
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-6 text-lg"
-              >
-                <a
-                  href="mailto:info@hsbswiss.com"
-                  className="flex items-center"
-                >
-                  <Mail className="mr-2 h-5 w-5" />
-                  E-Mail senden
-                </a>
-              </Button>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Footer */}
+      <div className="pb-10" />
       <Footer />
     </div>
   );
